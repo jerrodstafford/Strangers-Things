@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 // import {
@@ -10,58 +10,21 @@ import { createRoot } from 'react-dom/client';
 
 import {
     Posts,
-    Register
+    Register,
+    Header
 } from './components';
 
-// import {
-//   getAllPosts
-// } from './api'
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const App = () => {
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    const getResult = async() => {
-      await getAllPosts();
-    }
-
-    getResult();
-  }, []);
-
-  const getAllPosts = async() => {
-  try{  
-    const response = await fetch(`${BASE_URL}/posts`);
-    const result = await response.json();
-    const listAllPosts = result.data.posts;
-    setAllPosts(listAllPosts);
-    } catch(error) {throw error}
-  }
-
   return (
-      <div id="app">
-        <div className="header">
-        <h3>Stranger's Things</h3>
-        <nav>
-          <span>HOME</span>
-          <span>POSTS</span>
-          <span>PROFILE</span>
-          <span>LOGIN/LOGOUT</span>
-        </nav>
-        </div>
+    <div id="app">
+      <h3>Stranger's Things</h3>
         <Register />
-        <Posts
-          allPosts={ allPosts }  />
-        <div>
-          <div className="account-page">
-            <h2></h2>
-
-          </div>
-        </div>
+        <Header />
+        <Posts />
       </div>
   )
 

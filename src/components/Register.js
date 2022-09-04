@@ -4,13 +4,10 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Register = () => {
 
-
   const [createUsername, setCreateUsername] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [apiToken, setApiToken] = useState('');
-
-
 
   const userRegistration = async (newUsername, newPassword) => {
   try {
@@ -23,11 +20,9 @@ const Register = () => {
       })
     });
     const result = await response.json()
-    const getToken = result.data.token;
-    setApiToken(getToken);
-    localStorage.setItem('username', createUsername);
-    localStorage.setItem('password', createPassword);
-    localStorage.setItem('APIKey', getToken);
+    const apiToken = result.data.token;
+    setApiToken(apiToken);
+    localStorage.setItem('APIKey', apiToken);
   } catch(error) {throw error}
   }  
 
@@ -56,6 +51,5 @@ const Register = () => {
     </div>
   )
 }
-
 export default Register;
 
