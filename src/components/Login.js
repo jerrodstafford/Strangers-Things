@@ -10,7 +10,7 @@ from '../auth'
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const Header = () => {
+const Login = () => {
 
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
@@ -40,8 +40,7 @@ const Header = () => {
     }
 
   return (
-  <header>
-    <div className="login-page">
+    <div className="login-form">
       <h2>Stranger's Things</h2>
       <form onSubmit={handleSubmit}>
         <label>Username: </label>
@@ -53,7 +52,6 @@ const Header = () => {
         <button type="submit">LOGIN</button>
       </form>
     </div>
-  </header>
   )
 }
-export default Header;
+export default Login;

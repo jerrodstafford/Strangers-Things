@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import {
     Posts,
     Register,
-    Header
+    Login
 } from './components';
 
 
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div id="app">
         <Register />
-        <Header />
+        <Login />
         <Posts />
       </div>
   )
