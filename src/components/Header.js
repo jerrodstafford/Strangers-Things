@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import {
+  storeUserInfo,
+  clearUserInfo,
+  getUserInfo
+}
+from '../auth'
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Header = () => {
@@ -21,9 +28,9 @@ const Header = () => {
     });
     const result = await response.json();
     console.log(result)
-    const userToken = result.data.token;
-    setUserToken(userToken);
-    localStorage.setItem('userToken', userToken);
+    const webToken = result.data.token;
+    setUserToken(webToken);
+    localStorage.setItem('userToken', webToken);
   } catch(error) {throw error}
   }  
 
@@ -33,8 +40,9 @@ const Header = () => {
     }
 
   return (
+  <header>
     <div className="login-page">
-      <h1>WELCOME, PLEASE LOGIN</h1>
+      <h2>Stranger's Things</h2>
       <form onSubmit={handleSubmit}>
         <label>Username: </label>
         <input type="text" value={usernameLogin} onChange={(event) => {
@@ -45,6 +53,7 @@ const Header = () => {
         <button type="submit">LOGIN</button>
       </form>
     </div>
+  </header>
   )
 }
-export default Login;
+export default Header;

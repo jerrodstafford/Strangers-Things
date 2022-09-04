@@ -7,7 +7,7 @@ const Register = () => {
   const [createUsername, setCreateUsername] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [apiToken, setApiToken] = useState('');
+  const [userToken, setUserToken] = useState('');
 
   const userRegistration = async (newUsername, newPassword) => {
   try {
@@ -20,9 +20,9 @@ const Register = () => {
       })
     });
     const result = await response.json()
-    const apiToken = result.data.token;
-    setApiToken(apiToken);
-    localStorage.setItem('APIKey', apiToken);
+    const webToken = result.data.token;
+    setUserToken(webToken);
+    localStorage.setItem('userToken', webToken);
   } catch(error) {throw error}
   }  
 

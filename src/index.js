@@ -1,12 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-// import {
-//     BrowserRouter as Router,
-//     Route,
-//     Switch,
-//     Redirect
-// } from 'react-router-dom';
+
 
 import {
     Posts,
@@ -21,7 +17,6 @@ const App = () => {
 
   return (
     <div id="app">
-      <h3>Stranger's Things</h3>
         <Register />
         <Header />
         <Posts />
@@ -32,4 +27,8 @@ const App = () => {
 
 const container = document.getElementById('app');
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+<Router>
+  <App />
+</Router>
+);
