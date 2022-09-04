@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 
+import {
+  Posts
+} from './pages';
 
 import {
-    Posts,
     Register,
     Login
 } from './components';
