@@ -9,7 +9,8 @@ import {
 
 import {
     Register,
-    Login
+    Login,
+    Header
 } from './components';
 
 
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <div id="app">
+        <Header />
         <Register />
         <Login />
         <Posts />

@@ -1,5 +1,5 @@
-export const storeUserInfo = (token) => {
-    localStorage.setItem('userToken', JSON.stringify(token))
+export const storeUserInfo = () => {
+    localStorage.setItem('userToken', 'webToken')
 }
 
 export const clearUserInfo = () => {
@@ -7,6 +7,5 @@ export const clearUserInfo = () => {
 }
 
 export const getUserInfo = () => {
-   const token = JSON.parse(localStorage.getItem('userToken'));
-   return token;
+   localStorage.getItem('userToken');
 }
