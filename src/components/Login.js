@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 
 import {
-  storeUserInfo,
-  clearUserInfo,
-  getUserInfo
+  getUserToken,
+  storeUserToken,
+  storeUserCredentials
 }
 from '../auth'
 
@@ -14,11 +13,11 @@ const Login = () => {
 
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
-    const [userToken, setUserToken] = useState('');
+    const [userToken, setUserToken] = useState(getUserToken);
 
   const userLogin = async (uName, pWord) => {
-  try {
     const userCredentials = { username: uName, password: pWord }
+  try {
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {"Content-Type" : "application/json"},
@@ -30,7 +29,6 @@ const Login = () => {
     console.log(result)
     const webToken = result.data.token;
     setUserToken(webToken);
-    localStorage.setItem('userToken', webToken);
   } catch(error) {throw error}
   }  
 
@@ -38,10 +36,14 @@ const Login = () => {
     event.preventDefault();
       await userLogin(usernameLogin, passwordLogin);
     }
+  const handleLogin = () => {
+    storeUserToken(userToken);
+    storeUserCredentials(usernameLogin, passwordLogin)
+  }
+  
 
   return (
     <div className="login-form">
-      <h2>Stranger's Things</h2>
       <form onSubmit={handleSubmit}>
         <label>Username: </label>
         <input type="text" value={usernameLogin} onChange={(event) => {
@@ -49,7 +51,7 @@ const Login = () => {
         <label>Password: </label>
         <input type="text" value={passwordLogin} onChange={(event) => {
           setPasswordLogin(event.target.value);}} placeholder="Password" minLength={7} required />
-        <button type="submit">LOGIN</button>
+        <button type="submit" onClick={ handleLogin }>LOGIN</button>
       </form>
     </div>
   )

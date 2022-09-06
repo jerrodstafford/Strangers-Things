@@ -4,27 +4,28 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 
 import {
-  Posts
+  Posts,
+  Account,
+  Home
 } from './pages';
 
 import {
-    Register,
-    Login,
     Header
 } from './components';
 
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 const App = () => {
+
 
   return (
     <div id="app">
         <Header />
-        <Register />
-        <Login />
-        <Posts />
-      </div>
+      <Routes>
+        <Route path="/home" element={<Home title="Home"/>}></Route>
+        <Route path="/posts" element={<Posts title="Posts"/>} ></Route>
+        <Route path="/account" element={<Account title="account"/>}></Route>
+      </Routes>
+    </div>
   )
 
 }

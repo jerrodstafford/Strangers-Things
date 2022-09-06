@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+import {
+  storeUserToken,
+  storeUserCredentials,
+  getUserToken
+}
+from '../auth'
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Register = () => {
@@ -7,7 +14,7 @@ const Register = () => {
   const [createUsername, setCreateUsername] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [userToken, setUserToken] = useState('');
+  const [userToken, setUserToken] = useState(getUserToken);
 
   const userRegistration = async (newUsername, newPassword) => {
   try {
@@ -22,7 +29,6 @@ const Register = () => {
     const result = await response.json()
     const webToken = result.data.token;
     setUserToken(webToken);
-    localStorage.setItem('userToken', webToken);
   } catch(error) {throw error}
   }  
 
@@ -33,9 +39,13 @@ const Register = () => {
       await userRegistration(createUsername, createPassword);
     }
 
+    const handleLogin = () => {
+      storeUserToken(userToken);
+      storeUserCredentials(createUsername, createPassword)
+    }
+    
   return (
     <div className="registration-page">
-      <h1>USER REGISTRATION</h1>
       <form onSubmit={handleSubmit}>
         <label>Create Username</label>
         <input type="text" value={createUsername} onChange={(event) => {
@@ -46,7 +56,7 @@ const Register = () => {
         <label>Confirm Password</label>
         <input type="text" value={confirmPassword} onChange={(event) => {
           setConfirmPassword(event.target.value);}} placeholder="Confirm Password" minLength={7} required/>
-        <button type="submit">REGISTER</button>
+        <button type="submit" onClick={ handleLogin }>REGISTER</button>
       </form>
     </div>
   )

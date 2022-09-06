@@ -5,8 +5,6 @@ import {
   clearUserInfo
 } from '../auth';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 const Header = () => {
 
   const handleLogout = () => {
@@ -22,8 +20,7 @@ const Header = () => {
       ? <>
           <Link to="/home"> Home </Link>
           <Link to="/posts"> Posts </Link>
-          <Link to="/account/login"> Login </Link>
-          <Link to="/account/register"> Sign Up </Link>
+          <Link to="/account"> Login / Register </Link>
         </>
       :  <>
           <Link to="/home"> Home </Link>
