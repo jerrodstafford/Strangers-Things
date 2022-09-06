@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const Posts = () => {
-
-    const [allPosts, setAllPosts] = useState([]);
-
-    useEffect(() => {
-      const getResult = async() => {
-        await getAllPosts();
-      }
-  
-      getResult();
-    }, []);
-  
-    const getAllPosts = async() => {
-    try{  
-      const response = await fetch(`${BASE_URL}/posts`);
-      const result = await response.json();
-      const listAllPosts = result.data.posts;
-      setAllPosts(listAllPosts);
-      } catch(error) {throw error}
-    }
+const Posts = ({
+  allPosts
+}) => {
 
   return (
     <div className="posts-page">

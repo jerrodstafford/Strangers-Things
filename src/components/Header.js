@@ -20,7 +20,8 @@ const Header = () => {
       ? <>
           <Link to="/home"> Home </Link>
           <Link to="/posts"> Posts </Link>
-          <Link to="/account"> Login / Register </Link>
+          <Link to="/login"> Login </Link>
+          <Link to="/register"> Register </Link>
         </>
       :  <>
           <Link to="/home"> Home </Link>

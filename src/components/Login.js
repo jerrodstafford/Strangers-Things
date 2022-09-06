@@ -1,49 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import {
-  getUserToken,
-  storeUserToken,
-  storeUserCredentials
-}
-from '../auth'
+import { storeUserCredentials } from '../auth'
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+import { userLogin } from "../api";
 
-const Login = () => {
 
-    const [usernameLogin, setUsernameLogin] = useState('');
-    const [passwordLogin, setPasswordLogin] = useState('');
-    const [userToken, setUserToken] = useState(getUserToken);
+const Login = ({ 
+          usernameLogin, setUsernameLogin,
+          passwordLogin, setPasswordLogin,
+               }) => {
 
-  const userLogin = async (uName, pWord) => {
-    const userCredentials = { username: uName, password: pWord }
-  try {
-    const response = await fetch(`${BASE_URL}/users/login`, {
-      method: "POST",
-      headers: {"Content-Type" : "application/json"},
-      body: JSON.stringify({
-         user: userCredentials 
-      })
-    });
-    const result = await response.json();
-    console.log(result)
-    const webToken = result.data.token;
-    setUserToken(webToken);
-  } catch(error) {throw error}
-  }  
 
   const handleSubmit = async(event) => {
     event.preventDefault();
       await userLogin(usernameLogin, passwordLogin);
     }
   const handleLogin = () => {
-    storeUserToken(userToken);
     storeUserCredentials(usernameLogin, passwordLogin)
   }
   
 
   return (
     <div className="login-form">
+      <h1>Please, log in</h1>
       <form onSubmit={handleSubmit}>
         <label>Username: </label>
         <input type="text" value={usernameLogin} onChange={(event) => {

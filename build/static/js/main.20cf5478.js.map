@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/main.20cf5478.js","mappings":"AAAAA,QAAQC,IAAI","sources":["index.js"],"sourcesContent":["console.log('Hello, World!')"],"names":["console","log"],"sourceRoot":""}
