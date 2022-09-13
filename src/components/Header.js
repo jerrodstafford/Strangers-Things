@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
-  clearUserInfo
+  clearUserToken
 } from '../auth';
 
 const Header = () => {
 
   const handleLogout = () => {
-    clearUserInfo();
+    clearUserToken();
   }
 
   return (
