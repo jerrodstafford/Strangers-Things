@@ -1,8 +1,7 @@
 import React from "react";
 
-import { storeUserCredentials } from '../auth'
-
 import { userRegistration } from "../api";
+
 
 const Register = ({
           createUsername, setCreateUsername,
@@ -19,8 +18,7 @@ const Register = ({
     }
 
     const handleRegistration = () => {
-      // storeUserToken(userToken);
-      storeUserCredentials(createUsername, createPassword)
+      // useNavigate??
     }
 
 

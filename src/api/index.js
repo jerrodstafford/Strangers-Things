@@ -6,7 +6,6 @@ export const getAllPosts = async() => {
       const result = await response.json();
       const listAllPosts = result.data.posts;
       return listAllPosts;
-    //   setAllPosts(listAllPosts);
       } catch(error) {throw error}
     }
 
@@ -21,7 +20,6 @@ export const userLogin = async (uName, pWord) => {
           })
         });
         const result = await response.json();
-        console.log(result)
         const webToken = result.data.token;
         localStorage.setItem('userToken', webToken);
         return webToken;
@@ -39,7 +37,6 @@ export const userRegistration = async (newUsername, newPassword) => {
         })
       });
       const result = await response.json()
-      console.log(result)
       const webToken = result.data.token;
       localStorage.setItem('userToken', webToken);
       return webToken;

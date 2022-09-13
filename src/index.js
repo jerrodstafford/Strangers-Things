@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import { Posts, Home } from './pages';
+import { Posts } from './pages';
 
-import { Header, Login, Register } from './components';
-
-import { getAllPosts, userLogin, userRegistration } from './api';
+import { Header, Login, Register, Home } from './components';
 
 
 const App = () => {
@@ -17,36 +15,6 @@ const App = () => {
   const [createUsername, setCreateUsername] = useState('');
   const [createPassword, setCreatePassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [userToken, setUserToken] = useState('');
-
-
-  useEffect(() => {
-      getAllPosts()
-        .then(listAllPosts => {
-            setAllPosts(listAllPosts)
-        })
-        .catch(error => {
-          console.error(error);
-        });
-  }, []);
-
-  // useEffect(() => {
-  //     userLogin(usernameLogin, passwordLogin)
-  //       .then(webToken => {
-  //         setUserToken(webToken);
-  //       })
-  //       .catch(error => {
-  //         console.error(error);
-  //       });
-
-  //     userRegistration(createUsername, createPassword)
-  //       .then(webToken => {
-  //         setUserToken(webToken)
-  //       })
-  //       .catch(error => {
-  //         console.error(error)
-  //       });
-  // }, []);
 
 
   return (
@@ -57,12 +25,12 @@ const App = () => {
         <Route path="/posts" element={<Posts allPosts={ allPosts } setAllPosts={ setAllPosts } title="Posts"/>} ></Route>
         <Route path="/login" element={<Login
                   usernameLogin={ usernameLogin } setUsernameLogin={ setUsernameLogin }
-                  passwordLogin={ passwordLogin } setPasswordLogin={ setPasswordLogin} />} >
+                  passwordLogin={ passwordLogin } setPasswordLogin={ setPasswordLogin} title="Login" />} >
         </Route>
         <Route path="/register" element={<Register
                   createUsername={ createUsername } setCreateUsername={ setCreateUsername }
                   createPassword={ createPassword } setCreatePassword={ setCreatePassword }
-                  confirmPassword={ confirmPassword } setConfirmPassword={ setConfirmPassword } />} >
+                  confirmPassword={ confirmPassword } setConfirmPassword={ setConfirmPassword } title="Register" />} >
         </Route>
       </Routes>
     </div>

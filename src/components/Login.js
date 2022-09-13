@@ -1,7 +1,5 @@
 import React from "react";
 
-import { storeUserCredentials } from '../auth'
-
 import { userLogin } from "../api";
 
 
@@ -15,10 +13,11 @@ const Login = ({
     event.preventDefault();
       await userLogin(usernameLogin, passwordLogin);
     }
-  const handleLogin = () => {
-    storeUserCredentials(usernameLogin, passwordLogin)
-  }
-  
+
+    const handleLogin = (event) => {
+      // useNavigate??
+    }
+
 
   return (
     <div className="login-form">
