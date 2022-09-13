@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import { Posts } from './pages';
-
-import { Header, Login, Register, Home } from './components';
+import { Header, Login, Register, Home, Posts } from './components';
 
 
 const App = () => {
