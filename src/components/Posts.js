@@ -6,14 +6,18 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Posts = () => {
 
-    const [allPosts, setAllPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
 
     useEffect(() => {
-      const getResult = async() => {
-        await getAllPosts();
-      }
+      getAllPosts()
+        .then(listAllPosts => {
+          setAllPosts(listAllPosts)
+        }) 
+        .catch(error => {
+        console.error(error)
+        });
   
-      getResult();
+     
     }, []);
   
     const getAllPosts = async() => {
@@ -21,7 +25,7 @@ const Posts = () => {
       const response = await fetch(`${BASE_URL}/posts`);
       const result = await response.json();
       const listAllPosts = result.data.posts;
-      setAllPosts(listAllPosts);
+      return listAllPosts;
       } catch(error) {throw error}
     }
 

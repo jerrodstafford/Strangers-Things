@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+
 import { Header, Login, Register, Home, Posts } from './components';
+
+import './style.css';
 
 
 const App = () => {
@@ -15,10 +18,11 @@ const App = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
 
+
   return (
     <div id="app">
-        <Header />
-      <Routes>
+      <Header />
+      <Routes >
         <Route path="/home" element={<Home title="Home"/>}></Route>
         <Route path="/posts" element={<Posts allPosts={ allPosts } setAllPosts={ setAllPosts } title="Posts"/>} ></Route>
         <Route path="/login" element={<Login
@@ -40,6 +44,6 @@ const container = document.getElementById('app');
 const root = createRoot(container);
 root.render(
 <Router>
-  <App />
+  <App id="root" />
 </Router>
 );

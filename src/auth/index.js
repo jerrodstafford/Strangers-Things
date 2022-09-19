@@ -6,6 +6,9 @@ export const clearUserToken = () => {
     localStorage.removeItem('userToken');
 }
 
-export const getUserToken = () => {
-    localStorage.getItem('userToken');
-}
+export const getCurrentUser = () => {
+    const isLoggedIn = localStorage.getItem('userToken');
+    return isLoggedIn;
+  }
+
+

@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
   clearUserToken
 } from '../auth';
+
+
+import './Header.css';
 
 const Header = () => {
 
@@ -12,26 +15,26 @@ const Header = () => {
   }
 
   return (
-    <div id="header-nav">
+    <header>
       <h1>STRANGER'S THINGS</h1>
-        <nav id="header-links">
+        <nav>
       { 
           !localStorage.getItem('userToken')
       ? <>
-          <Link to="/home"> Home </Link>
-          <Link to="/posts"> Posts </Link>
-          <Link to="/login"> Login </Link>
-          <Link to="/register"> Register </Link>
+          <NavLink to="/home"> Home </NavLink>
+          <NavLink to="/posts"> Posts </NavLink>
+          <NavLink to="/login"> Login </NavLink>
+          <NavLink to="/register"> Register </NavLink>
         </>
       :  <>
-          <Link to="/home"> Home </Link>
-          <Link to="/profile"> Profile </Link>
-          <Link to="/posts"> Posts </Link>
-          <Link to="/home" onClick={ handleLogout }> Logout </Link>
+          <NavLink to="/home"> Home </NavLink>
+          <NavLink to="/profile"> Profile </NavLink>
+          <NavLink to="/posts"> Posts </NavLink>
+          <NavLink to="/home" onClick={ handleLogout }> Logout </NavLink>
         </>
       }
         </nav>
-    </div>
+    </header>
   )
 }
 export default Header;

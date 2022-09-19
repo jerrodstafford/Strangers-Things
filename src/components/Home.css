@@ -1,0 +1,25 @@
+.home-page {
+    height: 1200px;
+    display: flex;
+    flex-flow: column;
+    padding: 3em;
+    background-color: rgb(223, 223, 223);
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-page span {
+    display: flex;
+}
+
+.home-page a {
+    font-size: 1.4em;
+    color: black;
+    font-weight: bold;
+    margin: 15px;
+    padding: 10px;
+}
+
+.home-page a:hover {
+    color: rgb(159, 116, 159);
+}

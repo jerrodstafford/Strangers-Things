@@ -2,6 +2,8 @@ import React from "react";
 
 import { userRegistration } from "../api";
 
+import './Register.css';
+
 
 const Register = ({
           createUsername, setCreateUsername,
@@ -18,24 +20,34 @@ const Register = ({
     }
 
     const handleRegistration = () => {
+      localStorage.setItem('username', createUsername);
       // useNavigate??
     }
 
 
   return (
     <div className="registration-page">
-      <h1>New User?</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>New User? Sign Up</h1>
+      <br/>
+      <form className="input-container" onSubmit={handleSubmit}>
+      <div className="create-user">
         <label>Create Username</label>
         <input type="text" value={createUsername} onChange={(event) => {
           setCreateUsername(event.target.value);}} placeholder="Username" minLength={7} required />
+      </div>
+      <div className="create-password">
         <label>Create Password</label>
-        <input type="text" value={createPassword} onChange={(event) => {
+        <input type="password" value={createPassword} onChange={(event) => {
           setCreatePassword(event.target.value);}} placeholder="Password" minLength={7} required />
+      </div>
+      <div className="confirm-password">
         <label>Confirm Password</label>
-        <input type="text" value={confirmPassword} onChange={(event) => {
+        <input type="password" value={confirmPassword} onChange={(event) => {
           setConfirmPassword(event.target.value);}} placeholder="Confirm Password" minLength={7} required/>
-        <button type="submit" onClick={ handleRegistration }>REGISTER</button>
+      </div>
+      <div className="button-container">
+        <button className="register-button" type="submit" onClick={ handleRegistration }>REGISTER</button>
+      </div>
       </form>
     </div>
   )

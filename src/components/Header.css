@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+header {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: 'Balsamic Sans', sans-serif;
+    font-size: 18px;
+
+    background: rgb(159, 116, 159);
+    padding: 1em;
+}
+
+header h1 {
+    font-style: italic;
+
+}
+
+nav a {
+    justify-content: space-between;
+    font-size: 1.2em;
+    margin-left: 5px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 2px;
+}
+
+nav a:hover {
+    color: white;
+}
