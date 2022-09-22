@@ -7,8 +7,12 @@ export const clearUserToken = () => {
 }
 
 export const getCurrentUser = () => {
+    if(!localStorage.getItem('userToken')) {
+        return;
+  }
+    
     const isLoggedIn = localStorage.getItem('userToken');
     return isLoggedIn;
-  }
+}
 
 
