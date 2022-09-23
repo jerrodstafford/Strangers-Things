@@ -31,7 +31,7 @@ let navigate = useNavigate();
           <NavLink to="/register"> Register </NavLink>
         </>
       :  <>
-          <NavLink to="/"> Home </NavLink>
+          <NavLink to="/home"> Home </NavLink>
           <NavLink to="/profile"> Profile </NavLink>
           <NavLink to="/posts"> Posts </NavLink>
           <NavLink to="/" onClick={ handleLogout }> Logout </NavLink>
