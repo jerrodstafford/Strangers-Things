@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { userRegistration } from "../api";
 
@@ -12,11 +13,14 @@ const Register = ({
                   }) => {
 
 
+  let navigate = useNavigate();
+
   const handleSubmit = async(event) => {
     event.preventDefault();
     if(createPassword !== confirmPassword) {
       alert('Passwords Do Not Match'); return;}
       await userRegistration(createUsername, createPassword);
+      navigate("/home");
     }
 
     const handleRegistration = () => {

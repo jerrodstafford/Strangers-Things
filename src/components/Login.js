@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { userLogin } from "../api";
 
@@ -12,14 +12,16 @@ const Login = ({
                }) => {
 
 
+let navigate = useNavigate();
+
   const handleSubmit = async(event) => {
     event.preventDefault();
       await userLogin(usernameLogin, passwordLogin);
+      navigate("/home");
     }
 
     const handleLogin = () => {
       localStorage.setItem('username', usernameLogin);
-      // useNavigate??
     }
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
@@ -23,7 +23,8 @@ const App = () => {
     <div id="app">
       <Header />
       <Routes >
-        <Route path="/home" element={<Home title="Home"/>}></Route>
+        <Route exact path="/home" element={<Home title="Home"/>}></Route>
+        <Route path="/" element={<Home title="Home"/>}></Route>
         <Route path="/posts" element={<Posts allPosts={ allPosts } setAllPosts={ setAllPosts } title="Posts"/>} ></Route>
         <Route path="/login" element={<Login
                   usernameLogin={ usernameLogin } setUsernameLogin={ setUsernameLogin }

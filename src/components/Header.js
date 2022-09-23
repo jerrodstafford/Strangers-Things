@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
-  clearUserToken
+  clearUserInfo
 } from '../auth';
 
 
@@ -10,8 +10,12 @@ import './Header.css';
 
 const Header = () => {
 
+
+let navigate = useNavigate();
+
   const handleLogout = () => {
-    clearUserToken();
+    clearUserInfo();
+    navigate("/");
   }
 
   return (
@@ -21,16 +25,16 @@ const Header = () => {
       { 
           !localStorage.getItem('userToken')
       ? <>
-          <NavLink to="/home"> Home </NavLink>
+          <NavLink to="/"> Home </NavLink>
           <NavLink to="/posts"> Posts </NavLink>
           <NavLink to="/login"> Login </NavLink>
           <NavLink to="/register"> Register </NavLink>
         </>
       :  <>
-          <NavLink to="/home"> Home </NavLink>
+          <NavLink to="/"> Home </NavLink>
           <NavLink to="/profile"> Profile </NavLink>
           <NavLink to="/posts"> Posts </NavLink>
-          <NavLink to="/home" onClick={ handleLogout }> Logout </NavLink>
+          <NavLink to="/" onClick={ handleLogout }> Logout </NavLink>
         </>
       }
         </nav>

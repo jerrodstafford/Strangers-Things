@@ -2,7 +2,8 @@ export const storeUserToken = (token) => {
     localStorage.setItem('userToken', token);
 }
 
-export const clearUserToken = () => {
+export const clearUserInfo = () => {
+    localStorage.removeItem('username');
     localStorage.removeItem('userToken');
 }
 

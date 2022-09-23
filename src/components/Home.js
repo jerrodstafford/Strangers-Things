@@ -24,7 +24,7 @@ const Home = () => {
       :  <>
           <h1>Welcome { localStorage.getItem('username') }</h1>
           <br/>
-          <NavLink to="/profile" >View Profile</NavLink>
+          <NavLink to="/profile" >View profile</NavLink>
           <NavLink to="/posts" >View posts</NavLink>
         </>
       }
