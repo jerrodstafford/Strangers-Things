@@ -25,7 +25,6 @@ const Register = ({
 
     const handleRegistration = () => {
       localStorage.setItem('username', createUsername);
-      // useNavigate??
     }
 
 
